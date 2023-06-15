@@ -1,0 +1,15 @@
+<main class="main-container">
+    <div>
+        <h2>Valor da conta: R${{valor}}</h2>
+    </div>
+    <div class="depContainer">
+        <h2>Depositar</h2>
+        <input type="number" #dep placeholder="Depositar"> 
+        <button (click)="depositar(dep.value)">Depositar</button>
+    </div>
+    <div class="sacContainer">
+        <h2>Sacar:</h2>
+        <input type="number" #sac placeholder="Sacar"> 
+        <button (click)="sacar(sac.value)">Sacar</button>
+    </div>
+</main>

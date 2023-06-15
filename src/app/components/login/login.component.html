@@ -1,0 +1,18 @@
+<main class="posicao">
+    <h2 class="text-danger fs-1">Original - Internet Banking!</h2>
+    <div class="form-container">
+        <h3 class="text-danger fs-5 ml">Faça Login:</h3>
+        <p class="ml">Não tenho login, <a class="text-danger" routerLink="/home">Clique aqui!</a></p>
+        <form (ngSubmit)="login();" [formGroup]="form">
+            <mat-form-field>
+                <mat-label>E-mail:</mat-label>
+                <input matInput placeholder="E-mail:" formControlName="email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Senha:</mat-label>
+                <input matInput placeholder="Senha:" type="password" formControlName="password">
+            </mat-form-field>
+            <button mat-raised-button  color="warn" class="btn" type="submit">Enviar</button>
+        </form>
+    </div>
+</main>

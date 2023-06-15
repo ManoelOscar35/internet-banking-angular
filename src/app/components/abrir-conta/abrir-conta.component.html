@@ -1,0 +1,45 @@
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <mat-card>
+                    <mat-card-header>
+                        <h2 class="text-danger fs-3">Abra sua conta</h2>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <form (ngSubmit)="save();" [formGroup]="contaForm" #form class="form-container">
+                            <mat-form-field>
+                                <mat-label>Email:</mat-label>
+                                <input matInput placeholder="Email: " formControlName="email">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Nome do Cliente:</mat-label>
+                                <input matInput placeholder="Nome do Cliente: " formControlName="nameClient">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>CPF:</mat-label>
+                                <input matInput placeholder="CPF: " formControlName="cpf">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Agência:</mat-label>
+                                <input matInput placeholder="Agência: " formControlName="agency">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Conta:</mat-label>
+                                <input matInput placeholder="Conta: " formControlName="account">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Senha:</mat-label>
+                                <input matInput placeholder="Senha: " formControlName="password" type="password">
+                            </mat-form-field>
+                            <div class="box-btn">
+                                <button mat-button color="primary" type="submit">Save</button>
+                                <button mat-button color="warn" type="reset">Cancel</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</main>

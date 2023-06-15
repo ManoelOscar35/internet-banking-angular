@@ -1,0 +1,18 @@
+<main>
+    <mat-card class="style">
+        <mat-card-header>
+          <h1 class="text-white fs-2 pointer" routerLink="home">Original - Internet Banking</h1>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="ml">Não tenho conta, <a class="text-danger" routerLink="/abrir-conta">Clique aqui!</a></p>
+          <form (ngSubmit)="submit();" [formGroup]="form" class="form-container">
+            <mat-form-field hintLabel="Máx. 8 caracteres">
+              <mat-label>Conta Corrente:</mat-label>
+              <input matInput #input maxlength="8" placeholder="CC:" formControlName="conta">
+              <mat-hint align="end">{{input.value.length}}/8</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button  color="warn" class="btn" type="submit">Enviar</button>
+          </form>
+        </mat-card-content>
+    </mat-card>
+</main>
