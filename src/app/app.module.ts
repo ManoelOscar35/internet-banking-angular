@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/shared-material/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { TokenInterceptor } from './auth/token.interceptor';
 
 
@@ -26,9 +26,7 @@ registerLocaleData(locale, 'pt')
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    RouterModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [ 
     {

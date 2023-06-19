@@ -117,7 +117,6 @@ export class AbrirContaComponent {
 
     this.contasService.registerAccounts(payload).subscribe({
       next: (account: RegisterAccounts) => {
-        console.log(account),
         this.notify("Adicionado!"),
         this.router.navigate(["pre-dashboard"])
       },

@@ -36,7 +36,7 @@ export class PreDashboardComponent {
 
   getUser() {
     const { _id } = this.localStorageService.getLocalStorage('userInfo');
-    console.log(_id)
+    //console.log(_id)
     this.contasService.getUser(_id)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe({
@@ -53,11 +53,8 @@ export class PreDashboardComponent {
         takeUntil(this.unsubscribe$)
       ).subscribe({
         next: (contas: ListAccounts) => {
-          console.log(contas)
           contas.result.forEach((el) => {
-            console.log(el);
             this.contas.push(el);
-            console.log(this.contas);
           })
         }
       });
@@ -74,7 +71,6 @@ export class PreDashboardComponent {
   }
 
   submit() {
-    console.log(this.getValueConta())
     if(this.getValueConta() != null) {
       this.router.navigateByUrl("/dashboard");
     }

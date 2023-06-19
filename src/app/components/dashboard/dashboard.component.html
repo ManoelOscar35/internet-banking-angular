@@ -1,15 +1,44 @@
 <main class="main-container">
-    <div>
-        <h2>Valor da conta: R${{valor}}</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <h3>Data: {{date | date: 'dd/MM/yyyy'}} Hora: {{horas}}</h3>
+            </div>
+            <div>
+                <h2>Valor da conta: {{valor | currency: 'BRL':'R$'}}</h2>
+            </div>
+            <div class="valueContainer">
+                <form (ngSubmit)="detalhesDaConta();" [formGroup]="depositoForm">
+                    <input formControlName="deposito" placeholder="Informe o valor"> 
+                    <button type="submit">Depositar</button>
+                </form>
+            </div>
+            <div class="sacarContainer">
+                <form (ngSubmit)="sacarConta();" [formGroup]="saqueForm">
+                    <input formControlName="saque" placeholder="Informe o valor"> 
+                    <button type="submit">Sacar</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <mat-card>
+                <mat-card-content>
+                    <mat-list role="list">
+                        <h3 mat-subheader>Detalhes da Conta</h3>
+                        <div>
+                            <h4 role="listitem">Depósitos: {{numDeposito}}</h4>
+                            <h4 role="listitem">Saques: {{numSaque}}</h4>
+                        </div>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </div>
-    <div class="depContainer">
-        <h2>Depositar</h2>
-        <input type="number" #dep placeholder="Depositar"> 
-        <button (click)="depositar(dep.value)">Depositar</button>
-    </div>
-    <div class="sacContainer">
-        <h2>Sacar:</h2>
-        <input type="number" #sac placeholder="Sacar"> 
-        <button (click)="sacar(sac.value)">Sacar</button>
+    <div class="row">
+        <div class="col">
+            <div class="btn-container">
+                <button class="btn btn-danger" routerLink="/abrir-conta">Abrir nova conta</button>
+            </div>
+        </div>
     </div>
 </main>

@@ -7,6 +7,10 @@ import { environment } from 'src/environments/environments';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginUser } from '../models/loginUser';
 import { ListAccounts } from '../models/listAccounts';
+import { RegisterAccountDetails } from '../models/accountDetails';
+import { ListAccountDetails } from '../models/listAccountDetails';
+import { RegisterSacarConta } from '../models/sacarConta';
+import { ListSacarConta } from '../models/listSacarConta';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +27,6 @@ export class ContasService {
   }
 
   registerUser(user: any): Observable<RegisterUser> {
-    console.log(user)
     
 
     return this.http.post<RegisterUser>(`${environment.BASE_URL}/auth/register/user`, user)
@@ -43,7 +46,6 @@ export class ContasService {
   }
 
   loginUser(user: any): Observable<LoginUser> {
-    console.log(user)
     
     return this.http.post<LoginUser>(`${environment.BASE_URL}/auth/login`, user)
     .pipe(
@@ -62,7 +64,6 @@ export class ContasService {
   }
 
   registerAccounts(account: any): Observable<RegisterAccounts> {
-    console.log(account)
     return this.http.post<RegisterAccounts>(`${environment.BASE_URL}/auth/accounts`, account)
       .pipe(
         catchError((err) => {
@@ -76,6 +77,71 @@ export class ContasService {
     headers = headers.set('user', user);
     
     return this.http.get<ListAccounts>(`${environment.BASE_URL}/list/accounts`, {headers})
+      .pipe(
+        first(),
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+            this.notify('Ocorreu um erro na aplicação, tente novamente!');
+          } else if(err.status === 404) {
+            this.notify(err.error.message);
+          } else {
+            this.notify('Ocorreu um erro no servidor, tente mais tarde!');
+          }
+
+          return throwError(() => err)
+        })
+      )
+  }
+
+  
+  registerAccountDetails(accountDetails: any): Observable<RegisterAccountDetails> {
+    //let headers = new HttpHeaders();
+    //headers = headers.set('accountDetails', accountDetails);
+    return this.http.post<RegisterAccountDetails>(`${environment.BASE_URL}/register/account/details`, accountDetails)
+      .pipe(
+        catchError((err) => {
+          return throwError(() => err)
+        })
+      )
+  }
+
+  getRegisterAccountDetails(user: any): Observable<ListAccountDetails> {
+    let headers = new HttpHeaders();
+    headers = headers.set('user', user);
+    
+    return this.http.get<ListAccountDetails>(`${environment.BASE_URL}/list/account/details`, {headers})
+      .pipe(
+        first(),
+        catchError((err) => {
+          if(err.status === 0 && err.status !== 404) {
+            this.notify('Ocorreu um erro na aplicação, tente novamente!');
+          } else if(err.status === 404) {
+            this.notify(err.error.message);
+          } else {
+            this.notify('Ocorreu um erro no servidor, tente mais tarde!');
+          }
+
+          return throwError(() => err)
+        })
+      )
+  }
+  
+  registerSacarConta(sacarConta: any): Observable<RegisterSacarConta> {
+    //let headers = new HttpHeaders();
+    //headers = headers.set('accountDetails', accountDetails);
+    return this.http.post<RegisterSacarConta>(`${environment.BASE_URL}/register/sacar/conta`, sacarConta)
+      .pipe(
+        catchError((err) => {
+          return throwError(() => err)
+        })
+      )
+  }
+
+  getRegisterSacarConta(user: any): Observable<ListSacarConta> {
+    let headers = new HttpHeaders();
+    headers = headers.set('user', user);
+    
+    return this.http.get<ListSacarConta>(`${environment.BASE_URL}/list/sacar/conta`, {headers})
       .pipe(
         first(),
         catchError((err) => {

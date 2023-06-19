@@ -2,6 +2,22 @@
     margin: 20px;;
 }
 
-.depContainer {
+.valueContainer {
     margin-bottom: 10px;
+}
+
+.sacarContainer {
+    margin-top: 50px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-top: 15px;
+}
+
+mat-card {
+    margin-top: 75px;
+    height: auto;
 }
